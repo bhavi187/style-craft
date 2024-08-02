@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Craft</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #99582A;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #FFE6A7;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 2rem;
+            color: #432818;
+        }
+        .login-options button {
+            margin: 1rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #BB9457;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .login-options button:hover {
+            background-color: #6F1D1B;
+        }
+        .login-options button:active {
+            background-color: #432818;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Style Craft</h1>
+        <div class="login-options">
+            <button onclick="location.href='customer-signin.html'">Sign in as Customer</button>
+            <button onclick="location.href='tailor-signin.html'">Sign in as Tailor</button>
+        </div>
+    </div>
+</body>
+</html>
