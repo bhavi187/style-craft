@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Style Craft</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFE6A7; 
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            max-width: 1200px;
+            background-color: #FFFFFF; 
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #99582A; 
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #FFF;
+        }
+        .messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background-color: #F9F9F9; 
+        }
+        .message {
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 10px;
+            max-width: 70%;
+        }
+        .message.customer {
+            background-color: #6F1D1B; 
+            color: #FFF;
+            align-self: flex-start;
+        }
+        .message.tailor {
+            background-color: #BB9457;
+            color: #432818; 
+            align-self: flex-end;
+        }
+        .input-container {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #ccc;
+            background-color: #FFFFFF; 
+        }
+        .input-container input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .input-container button {
+            background-color: #99582A; 
+            color: #FFF;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            margin-left: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .input-container button:hover {
+            background-color: #6F1D1B; 
+        }
+        .input-container button:active {
+            background-color: #432818; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Chat with Tailor</div>
+        <div class="messages" id="messages">
+            <!-- Messages will be appended here by JavaScript -->
+        </div>
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script>
+        let firstMessageSent = false;
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            if (message) {
+                appendMessage('customer', message);
+                input.value = '';
+                if (!firstMessageSent) {
+                    setTimeout(() => {
+                        appendMessage('tailor', "Heyy... how's your day, can you provide your measurements?");
+                    }, 1000);
+                    firstMessageSent = true;
+                }
+            }
+        }
+
+        function appendMessage(sender, message) {
+            const messagesContainer = document.getElementById('messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.textContent = message;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>

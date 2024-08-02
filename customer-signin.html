@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Sign-In - Style Craft</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #99582A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #FFE6A7;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #432818;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #432818;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .form-group .password-container {
+            position: relative;
+            width: 100%;
+        }
+        .form-group .password-container input {
+            width: calc(100% - 2rem);
+            padding-right: 2rem;
+        }
+        .form-group .password-container .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 0.5rem;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #BB9457;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: white;
+        }
+        .form-group button:hover {
+            background-color: #6F1D1B;
+        }
+        .form-group button:active {
+            background-color: #432818;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Customer Sign-In</h2>
+        <form onsubmit="return handleSubmit(event, 'material-upload.html')">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required>
+                    <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        }
+
+        function handleSubmit(event, redirectUrl) {
+            event.preventDefault();
+            // Handle form submission, e.g., form validation, sending data to server, etc.
+            // For demonstration purposes, we'll just redirect to another page
+            window.location.href = redirectUrl;
+        }
+    </script>
+</body>
+</html>

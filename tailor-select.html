@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Tailor - Style Craft</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #BB9457; 
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #FFE6A7; 
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .tailor {
+            background-color: #FFFFFF; 
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .tailor h3 {
+            margin: 0;
+            color: #6F1D1B; 
+        }
+        .price-range, .rating, .address {
+            margin-top: 10px;
+            color: #432818; 
+        }
+        .rating span {
+            color: gold;
+        }
+        .select-button {
+            background-color: #99582A; 
+            color: #FFF;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            align-self: flex-start;
+            margin-top: 10px;
+        }
+        .select-button:hover {
+            background-color: #6F1D1B; 
+        }
+        .select-button:active {
+            background-color: #432818; 
+        }
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-container input[type="text"] {
+            width: 50%;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        .search-button {
+            background-color: #99582A; 
+            color: #FFF;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .search-button:hover {
+            background-color: #6F1D1B; 
+        }
+        .search-button:active {
+            background-color: #432818; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search tailors..." oninput="filterTailors()">
+            <button class="search-button">Search</button>
+        </div>
+        <div id="tailor-list">
+            <!-- Tailor divs will be appended here by JavaScript -->
+        </div>
+    </div>
+    <script>
+        const tailorList = [
+            { name: "Arjun Sharma", address: "Tamil Nadu, Chennai, Sriperambadur", priceRange: "₹500 - ₹1000", rating: 4 },
+            { name: "Priya Singh", address: "Karnataka, Bangalore, Whitefield", priceRange: "₹800 - ₹1500", rating: 5 },
+            { name: "Ravi Kumar", address: "Maharashtra, Mumbai, Andheri", priceRange: "₹600 - ₹1200", rating: 3 },
+            { name: "Anita Patel", address: "Gujarat, Ahmedabad, Vastrapur", priceRange: "₹700 - ₹1300", rating: 4 },
+            { name: "Vikram Joshi", address: "Delhi, New Delhi, Connaught Place", priceRange: "₹500 - ₹1100", rating: 2 },
+            { name: "Sunita Reddy", address: "Telangana, Hyderabad, Banjara Hills", priceRange: "₹750 - ₹1400", rating: 5 },
+            { name: "Manoj Verma", address: "Uttar Pradesh, Lucknow, Gomti Nagar", priceRange: "₹650 - ₹1250", rating: 4 },
+            { name: "Pooja Gupta", address: "West Bengal, Kolkata, Park Street", priceRange: "₹900 - ₹1600", rating: 5 },
+            { name: "Rajesh Mehta", address: "Rajasthan, Jaipur, C-Scheme", priceRange: "₹550 - ₹1050", rating: 3 },
+            { name: "Kavita Yadav", address: "Haryana, Gurgaon, DLF Phase 4", priceRange: "₹800 - ₹1500", rating: 4 },
+            { name: "Ajay Deshmukh", address: "Madhya Pradesh, Indore, Vijay Nagar", priceRange: "₹700 - ₹1300", rating: 2 },
+            { name: "Renu Agarwal", address: "Punjab, Chandigarh, Sector 17", priceRange: "₹950 - ₹1700", rating: 5 },
+            { name: "Suresh Bansal", address: "Bihar, Patna, Fraser Road", priceRange: "₹600 - ₹1200", rating: 3 },
+            { name: "Neha Kapoor", address: "Kerala, Kochi, Marine Drive", priceRange: "₹850 - ₹1550", rating: 4 },
+            { name: "Vishal Saxena", address: "Assam, Guwahati, Paltan Bazar", priceRange: "₹500 - ₹1000", rating: 2 }
+        ];
+
+        const tailorListContainer = document.getElementById('tailor-list');
+
+        function displayTailors(tailors) {
+            tailorListContainer.innerHTML = '';
+            tailors.forEach(tailor => {
+                const tailorDiv = document.createElement('div');
+                tailorDiv.className = 'tailor';
+                tailorDiv.innerHTML = `
+                    <h3>${tailor.name}</h3>
+                    <div class="address">Address: ${tailor.address}</div>
+                    <div class="price-range">Price Range: ${tailor.priceRange}</div>
+                    <div class="rating">Rating: ${'<span>&#9733;</span>'.repeat(tailor.rating)}${'<span>&#9734;</span>'.repeat(5 - tailor.rating)}</div>
+                    <button class="select-button" onclick="selectTailor('${tailor.name}')">Select</button>
+                `;
+                tailorListContainer.appendChild(tailorDiv);
+            });
+        }
+
+        function filterTailors() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const filteredTailors = tailorList.filter(tailor => 
+                tailor.name.toLowerCase().includes(searchInput)
+            );
+            displayTailors(filteredTailors);
+        }
+
+        function selectTailor(tailorName) {
+            alert(`Tailor ${tailorName} selected!`);
+            // Redirect to the next page with the selected tailor name
+            window.location.href = `chat-page.html?tailor=${tailorName}`;
+        }
+
+        // Display all tailors initially
+        displayTailors(tailorList);
+    </script>
+</body>
+</html>
