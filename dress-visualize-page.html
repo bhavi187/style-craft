@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dress Visualization - Style Craft</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color:  #BB9457; /* Solid color, adjusted darker */
-            margin: 0;
-            padding: 20px;
-        }
+body {
+    font-family: Lora, serif;
+    background: url('pinkk.avif') no-repeat center center fixed; 
+    background-size: cover;
+    margin: 0;
+    padding: 20px;
+}
+
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
         }
         .model {
-            background-color: #FFFFFF; /* White */
+            background-color: #ffffff; /* White */
             padding: 0.5rem;
             margin: 1rem;
             border-radius: 10px;
@@ -37,7 +39,8 @@
             cursor: pointer;
         }
         .select-button {
-            background-color: #99582A; /* Darker Brown */
+            background-color: #F98866; /* Darker Brown */
+            font-family: Lora, serif;
             color: white;
             padding: 0.5rem 1rem;
             border: none;
@@ -51,10 +54,10 @@
             bottom: 0;
         }
         .select-button:hover {
-            background-color: #6F1D1B;
+            opacity: 0.8;
         }
         .select-button:active {
-            opacity: 0.8;
+            opacity: 0.6;
         }
         .fullscreen-icon {
             position: absolute;
@@ -165,7 +168,7 @@
 
         if (!uploadedMaterial) {
             alert('No material uploaded.');
-            window.location.href = 'material-upload.html'; // Redirect if no material is found
+            window.location.href = 'measurements.html'; // Redirect if no material is found
         }
 
         function selectModel(modelNumber) {
@@ -173,7 +176,7 @@
             message.style.display = 'block';
 
             setTimeout(() => {
-                window.location.href = `tailor-select.html?model=${modelNumber}`;
+                window.location.href = `measurements.html?model=${modelNumber}`;
             }, 1500);
         }
 
