@@ -6,8 +6,8 @@
     <title>Tailor Sign-In - Style Craft</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #99582A; 
+            font-family: Lora, serif;
+            background: url('pic.avif') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,26 +15,29 @@
             margin: 0;
         }
         .container {
-            background-color: #FFE6A7; 
+            background: url('pinkk.avif') no-repeat center center/cover;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 600px;
+            font-family: Lora, serif;
         }
         h2 {
             text-align: center;
             margin-bottom: 1.5rem;
-            color:#432818 ; 
+            color: #432818;
+            font-family: Lora, serif;
         }
         .form-group {
             margin-bottom: 1.5rem;
             width: 100%;
+            font-family: Lora, serif;
         }
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #432818; 
+            color: #432818;
         }
         .form-group input {
             width: 100%;
@@ -42,6 +45,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 1rem;
+            font-family: Lora, serif;
         }
         .form-group .password-container {
             position: relative;
@@ -57,24 +61,26 @@
             right: 0.5rem;
             transform: translateY(-50%);
             cursor: pointer;
-            color: #6f1d1b; 
+            color: #6f1d1b;
         }
         .form-group button {
             width: 100%;
+            font-family: Lora, serif;
             padding: 0.75rem;
-            background-color: #6f1d1b; 
+            background-color: #F98866; /* Updated button color */
             border: none;
             border-radius: 5px;
-            color: #ffffff; 
+            color: white;
             font-size: 1rem;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
         .form-group button:hover {
-            background-color: #432818; 
+            background-color: #c87675;
+            box-shadow: 0 0 10px rgba(249, 136, 102, 0.8);
         }
         .form-group button:active {
-            background-color: #bb9457; 
+            background-color: #d7b7a4;
         }
     </style>
 </head>
@@ -109,17 +115,11 @@
     <script>
         function togglePassword(fieldId) {
             const passwordField = document.getElementById(fieldId);
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-            } else {
-                passwordField.type = 'password';
-            }
+            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
         }
 
         function handleSubmit(event, redirectUrl) {
             event.preventDefault();
-            // Handle form submission, e.g., form validation, sending data to server, etc.
-            // For demonstration purposes, we'll just redirect to another page
             window.location.href = redirectUrl;
         }
     </script>
