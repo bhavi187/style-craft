@@ -6,32 +6,38 @@
     <title>Material Upload - Style Craft</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #BB9457; 
-            margin: 0;
+            font-family: Lora, serif;
+            background: url('pic.avif') no-repeat center center/cover;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
             height: 100vh;
-            padding-top: 20px;
+            margin: 0;
         }
         .container {
-            background-color: #FFE6A7; 
+            background: url('pinkk.avif') no-repeat center center/cover;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 600px;
+            justify-content: center;
+            align-items: center;
             width: 100%;
-            position: relative;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
         }
         .video-container {
-            position: relative;
+            position: center;
             width: 100%;
+            justify-content: center;
+            align-items: center;
+            display:flex;
         }
         video {
-            width: 100%;
+            width: 95%;
             border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+            display:flex;
         }
         .text-overlay {
             position: absolute;
@@ -53,6 +59,7 @@
         }
         .upload-text {
             margin-top: 1rem;
+            font-family: Lora, serif;
             font-size: 1.25rem;
             font-weight: bold;
             color: #6F1D1B; 
@@ -61,7 +68,8 @@
             display: none;
         }
         .upload-label {
-            background-color: #99582A; 
+            background-color: #F98866; 
+            font-family: Lora, serif;
             color: #FFF;
             padding: 0.75rem;
             border-radius: 5px;
@@ -103,6 +111,7 @@
             overflow: hidden;
             display: none;
             margin-top: 1rem;
+            font-family: Lora, serif;
         }
         .progress-bar div {
             height: 1rem;
@@ -111,14 +120,15 @@
             transition: width 0.3s;
         }
         button {
-            background-color: #99582A; 
+            background-color: #F98866; 
             color: #FFF;
             padding: 0.5rem 1rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s;
             margin: 1rem 0;
+            font-family: Lora, serif;
         }
         button:hover {
             background-color: #6F1D1B; 
@@ -132,14 +142,14 @@
 <body>
     <div class="container">
         <div class="video-container">
-            <video id="promo-video" src="disp-vedio.mp4" autoplay muted loop>
+            <video id="promo-video" src="stvedio.mp4" autoplay muted loop>
                 Your browser does not support the video tag.
             </video>
-            <div class="text-overlay" id="text1">Welcome to Style Craft!</div>
-            <div class="text-overlay hidden" id="text2">Upload Your Material</div>
-            <div class="text-overlay hidden" id="text3">Visualize Your Dress</div>
-            <div class="text-overlay hidden" id="text4">Custom Tailoring Services</div>
-            <div class="text-overlay hidden" id="text5">Fast and Reliable Delivery</div>
+            <div class="text-overlay" id="text1"></div>
+            <div class="text-overlay hidden" id="text2"></div>
+            <div class="text-overlay hidden" id="text3"></div>
+            <div class="text-overlay hidden" id="text4"></div>
+            <div class="text-overlay hidden" id="text5"></div>
         </div>
         <div class="upload-text">Upload the Material</div>
         <label for="file-upload" class="upload-label">Choose File</label>
